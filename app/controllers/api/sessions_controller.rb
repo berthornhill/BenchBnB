@@ -1,4 +1,4 @@
-class Api::SessionController < ApplicationController
+class Api::SessionsController < ApplicationController
 
     def create
         @user = User.find_by_credentials(
@@ -14,12 +14,12 @@ class Api::SessionController < ApplicationController
     end
 
     def destroy
-        
+        debugger
         if current_user
             logout!
             render json: {message: "succesful logout"}
         else
-            render json: status: 404
+            render json: ["can't logout, no current user"], status: 404
         end
     end
   
