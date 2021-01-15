@@ -263,17 +263,29 @@ var Greeting = /*#__PURE__*/function (_React$Component) {
   var _super = _createSuper(Greeting);
 
   function Greeting(props) {
+    var _this;
+
     _classCallCheck(this, Greeting);
 
-    return _super.call(this, props);
-  }
+    debugger;
+    _this = _super.call(this, props);
+    _this.state = {
+      currentUser: props.currentUser
+    };
+    return _this;
+  } // componentDidMount() {
+  //   // this.props.currentUser =
+  //   debugger;
+  //   this.setState({ currentUser: this.props.currentUser });
+  // }
+
 
   _createClass(Greeting, [{
     key: "render",
     value: function render() {
-      if (this.props.currentUser) {
+      if (this.state.currentUser) {
         debugger;
-        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to bBnBbb (Bench BnB, babayy),");
+        return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", null, "Welcome to bBnBbb ".concat(this.state.currentUser, ","));
       } else {
         debugger;
         return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "nah");
@@ -305,6 +317,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var mapStateToProps = function mapStateToProps(state) {
+  // debugger;
   return {
     currentUser: state.entities.users[state.session.id]
   };
@@ -313,7 +326,7 @@ var mapStateToProps = function mapStateToProps(state) {
 var mapDispatchToProps = function mapDispatchToProps(dispatch) {
   return {
     logout: function logout() {
-      return dispatch(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"]);
+      return dispatch(Object(_actions_session_actions__WEBPACK_IMPORTED_MODULE_2__["logout"])());
     }
   };
 };
